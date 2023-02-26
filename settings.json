@@ -2,11 +2,11 @@
   "version": "0.0.1",
   "defaulttheme": "Dark",
   "website": {
-    "port": 6969
+    "port": 89
   },
   "pterodactyl": {
-    "domain": "https://hyperpanel.nighthosting.tech",
-    "key": "ptla_WUt5BjRRG1oSEbaStNvk10AXJUXq9AozmlSQX4Ws2e0"
+    "domain": "",
+    "key": ""
   },
   "custom_ads":{
     "enabled": false,
@@ -47,9 +47,9 @@
       },
       "oauth2": {
         "_comment": "Go to https://discord.dev/ and create an application to set these up.",
-        "id": "1077580670399954976",
-        "secret": "Vg2zKZhDd8DqOLksgMkkuro354dWMknR",
-        "link": "https://hyperactyl.nighthosting.tech",
+        "id": "",
+        "secret": "",
+        "link": "",
         "callbackpath": "/callback",
         "prompt": true,
 
@@ -66,12 +66,12 @@
       },
       "google": {
         "_comment1": "you can get these details from https://console.cloud.google.com/",
-        "clientid": "154737947828-o3m65pth574g82attvbbrvh2sbhq68gg.apps.googleusercontent.com",
+        "clientid": "",
 
-        "link": "https://hyperactyl.nighthosting.tech", 
+        "link": "", 
         "_comment2": "this link is the link of your dashboard example - example.hyperactyl.com",
 
-        "clientsecret": "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"
+        "clientsecret": ""
       },
       "ratelimits": {
         "enabled": true,
