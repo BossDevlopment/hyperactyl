@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="/assetsnew/images/favicon.svg"
+      type="image/x-icon"
+    />
+    <title></title>
+
+    
+    <script src="https://kit.fontawesome.com/9f45c806ba.js" crossorigin="anonymous"></script>
+    <!-- ========== All CSS files linkup ========= -->
+    <link rel="stylesheet" href="/assetsnew/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assetsnew/css/lineicons.css" />
+    <link rel="stylesheet" href="/assetsnew/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="/assetsnew/css/fullcalendar.css" />
+    <link rel="stylesheet" href="/assetsnew/css/fullcalendar.css" />
+    <link rel="stylesheet" href="/assetsnew/css/main.css" />
+  </head>
+  <body class="darkTheme">
+
+    <!-- ======== sidebar-nav =========== -->
+
+ 
+    <!-- ======== main-wrapper start =========== -->      <!-- ========== header start ========== -->
+  
+    
+    <main class="main-wrapper">
+          
+          
+          <!-- End Row -->
+          <div class="row">
+            <div class="col">
+              <div class="card-style">
+                <div class="card-content">
+                    <h3><a>Node Status</a></h4>
+                    <h4><a> </a></h4>
+                  </div>
+                  <div class="table-wrapper table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th><h6>Status</h6></th>
+                          <th><h6>Name</h6></th>
+                          <th><h6>Disk</h6></th>
+                          <th><h6>Memory</h6></th>
+                        </tr>
+                        <!-- end table row-->
+                      </thead>
+                      <tbody>
+                        <% for(let i = 0; i < node.length; i++) { %>
+                            <tr>
+                                <td>
+                                  <div class="lead">
+                                    
+                                      <% if(node[i].status == "online") { %> 
+                                        <div class="lead-image">
+                                        <img
+                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Green_dot.svg/300px-Green_dot.svg.png"/>
+                                      </div> 
+                                      <h6>Online</h6>
+                                      <% } else if(node[i].status == "offline") { %> 
+                                        <div class="lead-image">
+                                        <img
+                                        src="https://media.discordapp.net/attachments/1075348295641223298/1078338985065197700/offline.png"/>
+                                      </div>
+                                      <h6>Offline</h6>
+                                      <% } %>
+                                  </div>
+                                </td>
+                                <td>
+                                  <h6><%= node[i].name %></h6>
+                                </td>
+                                <td>
+                                  <h6><%= node[i].memory %>MB</h6>
+                                </td>
+                                <td>
+                                    <h6><%= node[i].disk %></h6>
+                                </td>
+                              </tr>
+                        <% } %>
+                        
+                        <!-- end table row -->
+                        
+                        <!-- end table row -->
+                      </tbody>
+                    </table>
+                    <!-- end table -->
+                  </div>
+                
+                <!-- End Chart -->
+              </div>
+            </div>
+            <!-- End Col -->
+            </div>
+
+            <!-- End Col -->
+          </div>
+          <!-- End Row -->
+      
+        </main>
+      <!-- ========== section end ========== -->
+  
+
+    <!-- ======== main-wrapper end =========== -->
+
+    <!-- ========= All Javascript files linkup ======== -->
+    <script src="/assetsnew/js/bootstrap.bundle.min.js"></script>
+    <script src="/assetsnew/js/Chart.min.js"></script>
+    <script src="/assetsnew/js/dynamic-pie-chart.js"></script>
+    <script src="/assetsnew/js/moment.min.js"></script>
+    <script src="/assetsnew/js/fullcalendar.js"></script>
+    <script src="/assetsnew/js/jvectormap.min.js"></script>
+    <script src="/assetsnew/js/world-merc.js"></script>
+    <script src="/assetsnew/js/polyfill.js"></script>
+    <script src="/assetsnew/js/main.js"></script>
+
+    
+  </body>
+</html>

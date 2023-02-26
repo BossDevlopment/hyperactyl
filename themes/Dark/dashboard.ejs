@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon" 
+      href="/assetsnew/images/favicon.svg"
+      type="image/x-icon"
+    />
+    <title><%= extra.dashboard.title %></title>
+    <% if (settings.api.arcio.enabled == true) { %>
+    <script async src="https://arc.io/widget.min.js#<%= settings.api.arcio.widgetid %>"></script>
+    <% } %>
+    
+    <script src="https://kit.fontawesome.com/9f45c806ba.js" crossorigin="anonymous"></script>
+    <!-- ========== All CSS files linkup ========= -->
+    <link rel="stylesheet" href="/assetsnew/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assetsnew/css/lineicons.css" />
+    <link rel="stylesheet" href="/assetsnew/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="/assetsnew/css/fullcalendar.css" />
+    <link rel="stylesheet" href="/assetsnew/css/fullcalendar.css" />
+    <link rel="stylesheet" href="/assetsnew/css/main.css" />
+  </head>
+  <body class="darkTheme">
+
+    <!-- ======== sidebar-nav =========== -->
+    <%- include('./theme_assets/mainnav') %>
+ 
+
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+      <!-- ========== header start ========== -->
+      <%- include('./theme_assets/header') %>
+    
+    
+          
+          
+          <!-- End Row -->
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="card-style mb-30">
+                <div class="table-wrapper table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th><h6>Name</h6></th>
+                          <th><h6>Ram</h6></th>
+                          <th><h6>Disk</h6></th>
+                          <th><h6>Cpu</h6></th>
+                        </tr>
+                        <!-- end table row-->
+                      </thead>
+                      <% for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i++) { %>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p><%= pterodactyl.relationships.servers.data[i].attributes.name.length > 15 ? pterodactyl.relationships.servers.data[i].attributes.name.slice(0, 12) + "..." : pterodactyl.relationships.servers.data[i].attributes.name %></p>
+                                </td>
+                                <td>
+                                    <p><%= pterodactyl.relationships.servers.data[i].attributes.limits.memory %>MB</p>
+                                </td>
+                                <td>
+                                  <p><%= pterodactyl.relationships.servers.data[i].attributes.limits.disk %>MB</p>
+                                </td>
+                                <td>
+                                    <p><%= pterodactyl.relationships.servers.data[i].attributes.limits.cpu %>%</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <% } %>
+                    </table>
+                    <!-- end table -->
+                  </div>
+                <!-- End Chart -->
+              </div>
+            </div>
+            <!-- End Col -->
+            <div class="col-lg-5">
+              <div class="card-style mb-30">
+                <div
+                  class="
+                    title
+                    d-flex
+                    flex-wrap
+                    align-items-center
+                    justify-content-between row
+                  "
+                >
+                  <div class="left">
+                    <h5 class="text-medium mb-30 mt-4">Information</h5>
+                  </div>
+                    <div class="text-md-center input-style-3 ">
+                        <label>Username</label>
+                        <input id="user" type="text" class="form-control form-control-muted"
+                        value="<%= pterodactyl.username %>" disabled>
+
+                    </div>
+                    <div class="text-md-center input-style-3 ">
+                        <label>Email</label>
+                        <input id="email" type="text" class="form-control form-control-muted"
+                            value="<%= pterodactyl.email %>" disabled>
+
+                    </div>
+                </div>
+                <!-- End Title -->
+              </div>
+            </div>
+            <!-- End Col -->
+            <%- include('./theme_assets/footer') %>
+          </div>
+          <!-- End Row -->
+          
+      <!-- ========== section end ========== -->
+    </main>
+    <!-- ======== main-wrapper end =========== -->
+    
+    <!-- ========= All Javascript files linkup ======== -->
+    <script src="/assetsnew/js/bootstrap.bundle.min.js"></script>
+    <script src="/assetsnew/js/Chart.min.js"></script>
+    <script src="/assetsnew/js/dynamic-pie-chart.js"></script>
+    <script src="/assetsnew/js/moment.min.js"></script>
+    <script src="/assetsnew/js/fullcalendar.js"></script>
+    <script src="/assetsnew/js/jvectormap.min.js"></script>
+    <script src="/assetsnew/js/world-merc.js"></script>
+    <script src="/assetsnew/js/polyfill.js"></script>
+    <script src="/assetsnew/js/main.js"></script>
+
+    
+  </body>
+</html>
