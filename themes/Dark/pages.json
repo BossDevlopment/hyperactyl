@@ -63,7 +63,8 @@
     "tos": "TOS.ejs",
     "pp": "pp.ejs",
     "refer": "refer.ejs",
-    "register": "register.ejs"
+    "register": "register.ejs",
+    "nodes": "node-status.ejs"
         
   },
   "mustbeloggedin": [

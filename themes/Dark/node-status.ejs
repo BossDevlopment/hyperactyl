@@ -24,13 +24,13 @@
   <body class="darkTheme">
 
     <!-- ======== sidebar-nav =========== -->
-
+    <%- include('./theme_assets/mainnav') %>
  
     <!-- ======== main-wrapper start =========== -->      <!-- ========== header start ========== -->
   
     
     <main class="main-wrapper">
-          
+      <%- include('./theme_assets/header') %>
           
           <!-- End Row -->
           <div class="row">
@@ -41,7 +41,7 @@
                     <h4><a> </a></h4>
                   </div>
                   <div class="table-wrapper table-responsive">
-                    <table class="table">
+                    <table class="table" id="table">
                       <thead>
                         <tr>
                           <th><h6>Status</h6></th>
@@ -52,41 +52,7 @@
                         <!-- end table row-->
                       </thead>
                       <tbody>
-                        <% for(let i = 0; i < node.length; i++) { %>
-                            <tr>
-                                <td>
-                                  <div class="lead">
-                                    
-                                      <% if(node[i].status == "online") { %> 
-                                        <div class="lead-image">
-                                        <img
-                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Green_dot.svg/300px-Green_dot.svg.png"/>
-                                      </div> 
-                                      <h6>Online</h6>
-                                      <% } else if(node[i].status == "offline") { %> 
-                                        <div class="lead-image">
-                                        <img
-                                        src="https://media.discordapp.net/attachments/1075348295641223298/1078338985065197700/offline.png"/>
-                                      </div>
-                                      <h6>Offline</h6>
-                                      <% } %>
-                                  </div>
-                                </td>
-                                <td>
-                                  <h6><%= node[i].name %></h6>
-                                </td>
-                                <td>
-                                  <h6><%= node[i].memory %>MB</h6>
-                                </td>
-                                <td>
-                                    <h6><%= node[i].disk %></h6>
-                                </td>
-                              </tr>
-                        <% } %>
-                        
-                        <!-- end table row -->
-                        
-                        <!-- end table row -->
+
                       </tbody>
                     </table>
                     <!-- end table -->
@@ -101,11 +67,34 @@
             <!-- End Col -->
           </div>
           <!-- End Row -->
-      
+          <%- include('./theme_assets/footer') %>
         </main>
       <!-- ========== section end ========== -->
   
+        <script>
+          // Find a <table> element with id="myTable":
+        async function idk() {
+          var table = document.getElementById("table");
 
+          var row = table.insertRow(1);
+          fetch('/api/nodes')
+        .then(response => response.json())
+        .then(json => {
+          for(let i = 0; i < json.length; i++) {
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+          var cell3 = row.insertCell(2);
+          var cell4 = row.insertCell(3);
+          cell1.innerHTML = `<p><div class="lead">${(json[i].status == 'online') ? '<div class="lead-image"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Green_dot.svg/300px-Green_dot.svg.png"/></div><h6> Online</h6>' : 'Offline'}</div></p>`;
+          cell2.innerHTML = `<h6>${json[i].name}</h6>`;
+          cell3.innerHTML = `<h6>${json[i].memory}</h6>`;
+          cell4.innerHTML = `<h6>${json[i].disk}</h6>`;
+          }
+        })
+          
+        }
+          idk()
+        </script>
     <!-- ======== main-wrapper end =========== -->
 
     <!-- ========= All Javascript files linkup ======== -->

@@ -14,7 +14,7 @@ module.exports.load = async function(app, db) {
     app.set('views', './themes/Dark');
 
 
-    app.get("/nodes", async (req, res) => {
+    app.get("/api/nodes", async (req, res) => {
         let theme = indexjs.get(req);
         if(newsettings.nodes_status.enabled == false) return four0four(req, res, theme);
 
@@ -67,7 +67,7 @@ const nodeStats = new Promise(async (resolve, reject) => {
 });
 
 nodeStats.then(() => {
-    res.render('node-status', { node, newsettings });
+    res.send(node);
 }).catch((error) => {
     console.error(error);
 });
