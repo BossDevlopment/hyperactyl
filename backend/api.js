@@ -6,7 +6,7 @@ const ejs = require("ejs");
 const fetch = require('node-fetch');
 const NodeCache = require( "node-cache" );
 const myCache = new NodeCache({ deleteOnExpire: true, stdTTL: 59 });
-
+let settings = require("../settings.json")
 module.exports.load = async function (app, db) {
   app.get("/api", async (req, res) => {
     let settings = await check(req, res);
@@ -17,6 +17,14 @@ module.exports.load = async function (app, db) {
       }
     );
   });
+
+  app.get("/api/version", async (req,res) => {
+    await fetch("https://api.github.com/repos/hyperactyl/hyperactyl/releases/latest")
+    .then(response => response.json())
+    .then(json => {
+        res.send(`{"name": "${json.name}", "current_version": "v${settings.version}" }`)
+    })
+  })
 
   app.get("/api/userinfo", async (req, res) => {
     let settings = await check(req, res);

@@ -96,17 +96,16 @@
                       </div>
                 <% } %>
                   <div class="d-flex justify-content-between align-items-center"></div>
-                    <a></a>
-                    <h6><a href="https://github.com/hyperactyl/hyperactyl/"></a>You Are Running Hyperactyl</a> V<%= settings.version %></h6>
-                    <a></a>
-                    <h6 id="latest">Updating...</h6>
+                    
+                  <h6 id="latest">Updating...</h6>
                     <script>
                         async function getversion() {
-                            let latestversion = await fetch("/hyperactyl/version")
+                            let latestversion = await fetch("/api/version")
                             .then(response => response.json())
                             .then(json => {
-                                document.getElementById("latest").innerHTML = `The Latest Version Of Hyperactyl Is ${json.name}`;
+                              document.getElementById("latest").innerHTML = `You Are Running ${(json.name == json.current_version) ? 'The Latest Version ' + json.name + ' Of Hyperactyl' : 'An Old Version ' + json.current_version  + ' Of Hyperactyl'}`;
                             })
+                           
                         }
                         getversion()
                     </script>
